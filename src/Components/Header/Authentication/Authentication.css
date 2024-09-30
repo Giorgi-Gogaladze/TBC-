@@ -1,0 +1,28 @@
+.authentication {
+    display: flex;
+    align-items: center;
+    gap: 2.8rem;
+}
+.authentication a {
+    color: #fff;
+    font-family: "Lato", sans-serif;
+    transition: transform 0.3s, color 0.1s;
+}
+.authentication a:hover {
+    color: blue;
+    transform: scale(1.1);
+}
+.authentication button {
+    cursor: pointer;
+    padding: 8px 12px;
+    background-color:#fff;
+    color: #000000;
+    border: 0;
+    font-weight: 600;
+    font-family:"Lato", sans-serif;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+.authentication button:hover {
+    transform: scale(1.1);
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import logo from '../../assets/logo/logo3.png'
 import Navbar from './Navbar/Navbar'
+import Authentication from './Authentication/Authentication'
 
 const Header = () => {
   return (
@@ -13,7 +14,7 @@ const Header = () => {
             </div>
         </div>
         <Navbar />
-        <div>hello</div>
+        <Authentication />
     </header>
   )
 }
