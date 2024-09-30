@@ -3,12 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+main {
+    flex: 1; 
+    padding-top: 60px;
+}
 .main-width {
     padding-right: 5vw;
     padding-left: 5vw;
- }
- header {
-    position: fixed;
-    top: 0;
-    left: 0;
  }

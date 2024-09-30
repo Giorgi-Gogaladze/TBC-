@@ -1,0 +1,55 @@
+.contact {
+    background-color: rgb(216, 194, 167);
+    padding-top:15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 25px;
+}
+.contact .half {
+    height: 60%;
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+/*     align-items: center; */
+}
+
+.contact .half img {
+    height: 100%;
+    width: 100% ;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid rgb(192, 110, 77);
+    border-radius: 30% 70% 70% 30% /  30% 30% 70% 70%;
+}
+.contact .half:nth-child(2)  {
+    padding: 20px;
+}
+
+.contact .half form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+.contact .half form h1 {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    font-family: "Lato", sans-serif;
+    font-weight: 800;
+}
+.contact .half form button {
+    max-width: 100px;
+    background-color: black;
+    color: white;
+    font-size: 22px;
+    padding: 10px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+.contact .half form  input, textarea {
+    font-size: 22px;
+    border: none;
+    
+}

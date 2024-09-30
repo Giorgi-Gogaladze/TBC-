@@ -1,8 +1,5 @@
 .footer {
-   width:100vw ;
-   position: fixed;
-   bottom: 0;
-   left: 0; 
+   width:100% ;
    background:linear-gradient(to right, black, rgb(34, 34, 34), black);
    display: flex;
    align-items: center;
