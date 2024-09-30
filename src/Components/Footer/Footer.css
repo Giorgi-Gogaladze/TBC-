@@ -1,0 +1,36 @@
+.footer {
+   width:100vw ;
+   position: fixed;
+   bottom: 0;
+   left: 0; 
+   background:linear-gradient(to right, black, rgb(34, 34, 34), black);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.footer-elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.icons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 4rem;
+}
+.footer .icons .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(27, 110, 27, 0.582);
+    border-radius: 50%;
+    border: 1px solid rgba(23, 77, 23, 0.582);
+    cursor: pointer;
+}
+.footer .icons .icon i {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}

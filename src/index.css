@@ -7,4 +7,8 @@
     padding-right: 5vw;
     padding-left: 5vw;
  }
- 
+ header {
+    position: fixed;
+    top: 0;
+    left: 0;
+ }
