@@ -1,0 +1,21 @@
+.header {
+    max-height: 200px;
+    width: 100vW;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #070000, #4C0001, #070000);
+    color: #fff;
+}
+header .image img {
+    height: 55px;
+}
+.image {
+    display: flex;
+    align-items: flex-end;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    gap: 0.5rem;
+    cursor: pointer;
+}
