@@ -6,15 +6,27 @@ function Footer() {
     <footer className=' main-width footer'>
         <section className='footer-elements'>
             <div className='icons'>
-                <dvi className="icon"><i class="fa-brands fa-facebook-f"></i></dvi>
-                <dvi className="icon"><i class="fa-brands fa-pinterest-p"></i></dvi>
-                <dvi className="icon"><i class="fa-brands fa-instagram"></i></dvi>
-                <dvi className="icon"><i class="fa-brands fa-twitter"></i></dvi>
+                <div className="icon"><i class="fa-brands fa-facebook-f"></i></div>
+                <div className="icon"><i class="fa-brands fa-pinterest-p"></i></div>
+                <div className="icon"><i class="fa-brands fa-instagram"></i></div>
+                <div className="icon"><i class="fa-brands fa-twitter"></i></div>
             </div>
-            <div>
-
+            <div className='nav'>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <span class="divider">|</span>
+                    <li><a href="">ABOUT US</a></li>
+                    <span class="divider">|</span>
+                    <li><a href="">SERVICES</a></li>
+                    <span class="divider">|</span>
+                    <li><a href="">CONTACT</a></li>
+                    <span class="divider">|</span>
+                    <li><a href="">BLOG</a></li>
+                </ul>
             </div>
-            <div></div>
+            <div className='footer-bottom'>
+                <p>�� 2024 All rights reserved. Designed by <a href="#">idk, me</a></p>
+            </div>
         </section>
        
     </footer>

@@ -7,16 +7,19 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   z-index: 99;
 }
 .footer-elements {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
 }
 .icons {
     margin-top: 2rem;
     display: flex;
-    gap: 4rem;
+    gap: 1.8rem;
 }
 .footer .icons .icon {
     display: flex;
@@ -33,4 +36,49 @@
     font-size: 20px;
     font-weight: 500;
     color: white;
+}
+.footer .icons .icon {
+    border-right: #fff;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+.nav ul li a{
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 600;
+    transition: transform 0.3s;
+    font-family: "Lato", sans-serif;
+}
+.nav ul li a:hover {
+    transform: scale(1.05);
+}
+.divider {
+    color: #fff;
+    font-weight: 700;
+}
+
+.footer-bottom {
+    width: 100vw;
+    background-color:rgba(27, 110, 27, 0.582);
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    color: #fff;
+}
+.footer-bottom p {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Lato", sans-serif;
+    text-transform: uppercase;
+}
+.footer-bottom p a {
+    color: #fff;
+    text-decoration: underline;
 }
