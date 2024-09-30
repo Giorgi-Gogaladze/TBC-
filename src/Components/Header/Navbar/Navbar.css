@@ -1,0 +1,15 @@
+ .navbar ul {
+    display: flex;
+    gap: 2.8rem;
+ }
+.navbar ul li {
+    list-style: none;
+    font-family: sans-serif;
+}
+
+.navbar ul li a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 500;
+}

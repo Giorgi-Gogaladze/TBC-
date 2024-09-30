@@ -1,6 +1,7 @@
 import React from 'react'
 import './Header.css'
 import logo from '../../assets/logo/logo3.png'
+import Navbar from './Navbar/Navbar'
 
 const Header = () => {
   return (
@@ -11,8 +12,8 @@ const Header = () => {
                 <h2>UNI-WEB</h2>
             </div>
         </div>
-        <nav></nav>
-        <div></div>
+        <Navbar />
+        <div>hello</div>
     </header>
   )
 }
