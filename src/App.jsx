@@ -3,6 +3,7 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import AboutUs from './Components/AboutUs/AboutUs';
 import Contact from './Components/Contact/Contact';
+import Blog from './Components/Blog/Blog';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/AboutUs" element={<AboutUs />}/>
         <Route path="/Contact" element={<Contact />}/>
+        <Route path="/Blog" element={<Blog />}/>
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
       <Footer />   
