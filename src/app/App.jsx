@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Footer from './Components/Footer/Footer';
-import Header from './Components/Header/Header';
-import AboutUs from './Components/AboutUs/AboutUs';
-import Contact from './Components/Contact/Contact';
-import Blog from './Components/Blog/Blog';
-import Profile from './Components/Profile/Profile';
-import PageNotFound from './Components/PageNotFound/PageNotFound';
+import Footer from '../Components/Footer/Footer';
+import Header from '../Components/Header/Header';
+import AboutUs from './aboutUs/page';
+import Contact from './contact/page';
+import Blog from './blog/page';
+import Profile from '../Components/profile/page';
+import PageNotFound from '../Components/pageNotFound/PageNotFound';
 
 function App() {
   return (
