@@ -18,6 +18,7 @@ function Products() {
       setProduct(data.products)
     } catch (error) {
       console.log(error.message)
+      
     }finally {
       setisLoading(false)
     }
@@ -32,7 +33,7 @@ function Products() {
     <div className="products main-width">
       <div className='product-cards'>
         {Product.map(product => (
-          <div className='product-card'>
+          <div key={product.id} className='product-card'>
               <div className="image">
                 <img src={product.images[0]} alt={product.title} />
               </div>
