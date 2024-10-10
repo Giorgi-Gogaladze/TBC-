@@ -1,12 +1,11 @@
 import React from 'react'
 import './Contact.css'
-import contactUs from '../../assets/contact-us-image.jpg'
 
 function Contact() {
   return (
     <section className='contact main-width'>
       <div className='half'>
-        <img src={contactUs} alt="contactUs" />
+        <img src='/assets/contact-us-image.jpg' alt="contactUs" />
       </div>
       <div className='half'>
         <form >

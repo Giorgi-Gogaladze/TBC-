@@ -1,13 +1,12 @@
 import React from 'react'
 import './Profile.css'
-import Norton from '../../assets/Norton.jpg'
 
 function Profile() {
   return (
     <article className='main-width profile'>
         <div className='whole-card'>
             <div className='norton'>
-                <img src={Norton} alt="Edward-Norton" />
+                <img src='/assets/Norton.jpg' alt="Edward-Norton" />
             </div>
             <div className='information'>
                 <form>

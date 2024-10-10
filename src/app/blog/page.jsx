@@ -1,8 +1,5 @@
 import React from 'react'
 import './Blog.css'
-import diddy from '../../assets/diddy.jpg'
-import beyonce from '../../assets/beyonce.jpg'
-import jayZ from '../../assets/jayZ.jpg'
 
 function Blog() {
   return (
@@ -13,7 +10,7 @@ function Blog() {
         <div className='blog-cards'>
             <div className="card">
                 <div className="image">
-                    <img src={diddy} alt="diddy" />
+                    <img src='/assets/diddy.jpg' alt="diddy" />
                 </div>
                 <div className='info'>
                     <h3>Puff Diddy</h3>
@@ -23,7 +20,7 @@ function Blog() {
             </div>
             <div className="card">
                 <div className="image">
-                    <img src={beyonce} alt="beyonce" />
+                    <img src='/assets/beyonce.jpg' alt="beyonce" />
                 </div>
                 <div className='info'>
                     <h3>Beyonce</h3>
@@ -34,7 +31,7 @@ function Blog() {
             </div>
             <div className="card">
                 <div className="image">
-                    <img src={jayZ} alt="jayZ" />
+                    <img src='/assets/jayZ.jpg' alt="jayZ" />
                 </div>
                 <div className='info'>
                     <h3>Jay Z</h3>

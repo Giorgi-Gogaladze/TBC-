@@ -29,13 +29,11 @@
     border: 1px solid rgba(23, 77, 23, 0.582);
     cursor: pointer;
 }
-.footer .icons .icon i {
+.footer  .icons .icon i {
     font-size: 20px;
     font-weight: 500;
     color: white;
-}
-.footer .icons .icon {
-    border-right: #fff;
+    z-index: 999;
 }
 
 .nav ul {

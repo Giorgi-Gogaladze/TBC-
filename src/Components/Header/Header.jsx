@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
-import Navbar from './Navbar/Navbar';
-import Authentication from './Authentication/Authentication';
+import Navbar from './navbar/Navbar';
+import Authentication from './authentication/Authentication';
 
 const Header = () => {
   return (
