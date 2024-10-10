@@ -38,7 +38,7 @@ async function fetchData() {
                 <div className='card' key={post.id}>
                     <h2>{post.title}</h2>
                     <p>{post.body}</p>
-                        <Link href='/'>
+                        <Link href={`/blog/${post.id}`}>
                         <button>See More</button>
                         </Link>
                     <div className='additional'>
