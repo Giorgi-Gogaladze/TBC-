@@ -1,46 +1,34 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import './Blog.css'
+import Loading from '../../Components/loading/Loading'
 
 function Blog() {
+const {posts,setPosts} = useState([]); 
+const [isLoading,setisLoading] =useState(true)
+
+async function fetchData() {
+    setisLoading(true)
+    try {const response = await fetch('https://dummyjson.com/posts');
+        if(!response.ok) {
+            console.log('there is a problem fetching data')
+        }
+        const data = await response.json();
+        setPosts(data);
+    } catch (error) {
+        console.log(error)
+        setisLoading(true);
+    }
+}
+    useEffect(() => {
+        fetchData()
+    },[] )
+    
+    if(isLoading) return <Loading />
+
+
   return (
     <section className='main-width blog'>
-        <div className="heading">
-            <h1>Our Blog</h1>
-        </div>
-        <div className='blog-cards'>
-            <div className="card">
-                <div className="image">
-                    <img src='/assets/diddy.jpg' alt="diddy" />
-                </div>
-                <div className='info'>
-                    <h3>Puff Diddy</h3>
-                    <p>P. Diddy (Sean Combs) is an American rapper, record producer, and entrepreneur, known for founding Bad Boy Records and his influence on the hip-hop and fashion industries.</p>
-                    <button>Read More</button>
-                </div>
-            </div>
-            <div className="card">
-                <div className="image">
-                    <img src='/assets/beyonce.jpg' alt="beyonce" />
-                </div>
-                <div className='info'>
-                    <h3>Beyonce</h3>
-                    <p>
-                    Beyoncé is an American singer, songwriter, and actress, renowned for her powerful voice, dynamic performances, and influence on pop and R&B music.</p>
-                    <button>Read More</button>
-                </div>
-            </div>
-            <div className="card">
-                <div className="image">
-                    <img src='/assets/jayZ.jpg' alt="jayZ" />
-                </div>
-                <div className='info'>
-                    <h3>Jay Z</h3>
-                    <p>Jay-Z (Shawn Carter) is an American rapper, entrepreneur, and record executive, known for his influential hip-hop career and business ventures, including Roc Nation and Tidal.</p>
-                    <button>Read More</button>
-                </div>
-            </div>
-
-        </div>
     </section>
   )
 }
