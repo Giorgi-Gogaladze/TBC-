@@ -5,8 +5,8 @@ import Link from 'next/link'
 import Loading from '../../Components/loading/Loading'
 
 function Products() {
-  const [Product, setProduct] = useState([])
-  const [isLoading,setisLoading] =useState(false)
+  const [Product, setProduct] = useState([]);
+  const [isLoading,setisLoading] =useState(false);
 
   async function fetchData() {
     setisLoading(true)
