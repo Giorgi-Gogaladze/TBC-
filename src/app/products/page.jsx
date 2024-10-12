@@ -7,6 +7,7 @@ import Loading from '../../Components/loading/Loading'
 function Products() {
   const [Product, setProduct] = useState([]);
   const [isLoading,setisLoading] =useState(false);
+  const [Search, setSearch] = useState([]);
 
   async function fetchData() {
     setisLoading(true)
@@ -31,6 +32,15 @@ function Products() {
 
   return (
     <div className="products main-width">
+      <div className="search">
+        <input type="text"
+        placeholder='Search  product by name ...'
+        value={Search}
+        onChange={(e) => setSearch(e.target.value)}
+         />
+         <button>Search</button>
+      </div>
+
       <div className='product-cards'>
         {Product.map(product => (
           <div key={product.id} className='product-card'>
