@@ -11,11 +11,29 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/blog/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/blog/page.css",
+      "static/chunks/app/blog/page.js"
+    ],
     "/products/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/products/page.css",
       "static/chunks/app/products/page.js"
+    ],
+    "/contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/contact/page.css",
+      "static/chunks/app/contact/page.js"
+    ],
+    "/products/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/products/[id]/page.css",
+      "static/chunks/app/products/[id]/page.js"
     ]
   }
 }

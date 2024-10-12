@@ -7,15 +7,24 @@ import Loading from '../../Components/loading/Loading'
 function Products() {
   const [Product, setProduct] = useState([]);
   const [isLoading,setisLoading] =useState(false);
-  const [Search, setSearch] = useState([]);
+  const [SearchInput, setSearchInput] = useState('');
+  const [nothingFound, setNothingFound] = useState(false);
 
-  async function fetchData() {
+  async function fetchData(name) {
     setisLoading(true)
-    try {const response = await fetch('https://dummyjson.com/products')
+    try {
+      const response = await fetch(`https://dummyjson.com/products/search?q=${name}`)
       if(!response.ok) {
         console.log(`something went wrong, didn't fetch`)
       }
       const data = await response.json();
+
+      if(data.products.length === 0) {
+        setNothingFound(true)
+      }else{
+        setNothingFound(false)
+      }
+
       setProduct(data.products)
     } catch (error) {
       console.log(error.message)
@@ -25,40 +34,49 @@ function Products() {
     }
   }
   useEffect(() => {
-    fetchData()
+    fetchData('')
   }, [])
 
   if(isLoading) return <Loading />
 
   return (
+
     <div className="products main-width">
       <div className="search">
         <input type="text"
-        placeholder='Search  product by name ...'
-        value={Search}
-        onChange={(e) => setSearch(e.target.value)}
+        placeholder='Search product by name . . .'
+        value={SearchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
          />
-         <button>Search</button>
+         <button onClick={() =>
+         {
+          fetchData(SearchInput);
+          setSearchInput('')
+          }}>Search</button>
       </div>
 
       <div className='product-cards'>
-        {Product.map(product => (
-          <div key={product.id} className='product-card'>
-              <div className="image">
-                <img src={product.images[0]} alt={product.title} />
+        {nothingFound ? (
+          <div className="not-found"><p>No product found</p></div>
+        ) : (
+          Product.map(product => (
+            <div key={product.id} className='product-card'>
+                <div className="image">
+                  <img src={product.images[0]} alt={product.title} />
+                </div>
+                <div className='info'>
+                  <h2>{product.brand}</h2>
+                  <h4>{product.title}</h4>
+                  <p>Price: ${product.price}</p>
+                  <p>Stock: {product.availabilityStatus}</p>
+                    <Link href={`/products/${product.id}`} key={product.id}>
+                      <button>See more</button>
+                    </Link>
+                </div>
+  
               </div>
-              <div className='info'>
-                <h2>{product.brand}</h2>
-                <h4>{product.title}</h4>
-                <p>Price: ${product.price}</p>
-                <p>Stock: {product.availabilityStatus}</p>
-                  <Link href={`/products/${product.id}`} key={product.id}>
-                    <button>See more</button>
-                  </Link>
-              </div>
-
-            </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   )

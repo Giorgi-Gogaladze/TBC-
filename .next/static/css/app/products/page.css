@@ -31,7 +31,19 @@
     color: white;
     font-weight: 600;
 }
-
+.not-found {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+}
+.not-found p {
+    font-size: 42px;
+    color: black;
+    font-weight: 700;
+    
+}
 
 .product-cards {
     width: 100%;
