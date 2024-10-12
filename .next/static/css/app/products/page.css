@@ -109,6 +109,19 @@
     display: flex;
     gap: 1rem;
     margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+.sorting p {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.63);
+    font-weight: 500;
+}
+.sorting select {
+    border: 2px solid white;
+    outline: none;
+    border-radius: 3px;
+    color: rgb(87, 85, 85);
+    font-weight: 600;
 }
 /*!********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/Components/loading/Loading.css ***!

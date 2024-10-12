@@ -49,7 +49,12 @@ function Products() {
     if( sortBy === 'price-down') {
       return b.price - a.price;
     }
-    return 0;
+    if(sortBy === 'rating-up') {
+      return a.rating - b.rating;
+    }
+    if(sortBy === 'rating-down') {
+      return b.rating - a.rating;
+    }
   })   
 
 
@@ -81,6 +86,8 @@ if(isLoading) return <Loading />
           <option></option>
           <option value='price-up'>Price-Up</option>
           <option value='price-down'>Price-Down</option>
+          <option value='rating-up'>Rating-Up</option>
+          <option value='rating-down'>Rating-Down</option>
         </select>
       </div>
 

@@ -1,0 +1,103 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/app/products/[id]/Product.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.main-card {
+    background-color: rgba(0, 0, 0, 0.945);
+    color: #fff;
+    width: 100vw;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-card h1:nth-child(1) {
+    margin-bottom: 3rem;
+    font-size: 43px;
+    text-decoration: underline;
+}
+.inner-container {
+    padding-right: 10%;
+    padding-left: 10%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 3rem;
+}
+.title {
+    font-size: 28px;
+    font-family: sans-serif;
+}
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+.info-container h3 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.info-container .description {
+    color: grey;
+    font-size: 18px;
+}
+.info-container h2 {
+    color: gold
+}
+.info-container .availability {
+    color: green;
+    font-weight: bolder;
+}
+.info-container .title {
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 400;
+}
+.for-image {
+    width:70rem;
+    height: 50rem;
+    height: auto;
+    overflow: hidden;
+}
+.for-image img {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+    object-position: center;
+}
+.button {
+    padding: 12px;
+    background: #fff;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    width: 190px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+.adding {
+    display: flex;
+    justify-content: space-evenly;
+}
+.adding div {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.button:hover {
+    transform: scale(1.05);
+    background-color: rgb(88, 88, 88);
+    color: #fff;
+}
+@media only screen and (max-width: 860px) {
+    .inner-container {
+        flex-direction: column;
+    }
+    .for-image {
+        width: 100%;
+    }
+}
