@@ -102,3 +102,8 @@
 .info button:hover {
     transform: scale(1.05);
 }
+.sorting {
+    display: flex;
+    gap: 1rem;
+    margin-right: 2rem;
+}

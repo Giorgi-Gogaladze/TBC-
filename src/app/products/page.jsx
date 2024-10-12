@@ -9,6 +9,7 @@ function Products() {
   const [isLoading,setisLoading] =useState(false);
   const [SearchInput, setSearchInput] = useState('');
   const [nothingFound, setNothingFound] = useState(false);
+  const [sortBy, setSortBy] = useState('');
 
   async function fetchData(name) {
     setisLoading(true)
@@ -18,7 +19,6 @@ function Products() {
         console.log(`something went wrong, didn't fetch`)
       }
       const data = await response.json();
-
       if(data.products.length === 0) {
         setNothingFound(true)
       }else{
@@ -37,7 +37,28 @@ function Products() {
     fetchData('')
   }, [])
 
-  if(isLoading) return <Loading />
+
+  const handleSort = (e) => {
+    setSortBy(e.target.value)
+  }
+
+  const sortedProduct = [...Product].sort((a, b) => {
+    if(sortBy === 'price-up') {
+      return a.price - b.price;
+    }
+    if( sortBy === 'price-down') {
+      return b.price - a.price;
+    }
+    return 0;
+  })   
+
+
+useEffect(() => {
+  setProduct(sortedProduct)
+}, [sortBy])
+
+if(isLoading) return <Loading />
+
 
   return (
 
@@ -53,6 +74,14 @@ function Products() {
           fetchData(SearchInput);
           setSearchInput('')
           }}>Search</button>
+      </div>
+      <div className="sorting">
+        <p>Sort By: </p>
+        <select name="sort" onChange={handleSort}>
+          <option></option>
+          <option value='price-up'>Price-Up</option>
+          <option value='price-down'>Price-Down</option>
+        </select>
       </div>
 
       <div className='product-cards'>
