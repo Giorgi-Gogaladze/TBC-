@@ -11,12 +11,24 @@ function Products() {
   const [nothingFound, setNothingFound] = useState(false);
   const [sortBy, setSortBy] = useState('');
 
-  async function fetchData(name) {
+
+  const debounce = (func, delay) => {
+    let timeOut;
+    return (...args) => {
+      if(timeOut) clearTimeout(timeOut)
+        timeOut =setTimeout(() => {
+          func(...args);
+        }, delay);
+    }
+  }
+
+  async function fetchData(name ='') {
     setisLoading(true)
     try {
-      const response = await fetch(`https://dummyjson.com/products/search?q=${name}`)
+      const response = await fetch( name ? `https://dummyjson.com/products/search?q=${name}` : `https://dummyjson.com/products`)
       if(!response.ok) {
         console.log(`something went wrong, didn't fetch`)
+        return;
       }
       const data = await response.json();
       if(data.products.length === 0) {
@@ -33,9 +45,16 @@ function Products() {
       setisLoading(false)
     }
   }
+
+  const debouncFunc = debounce(fetchData, 1500)
+
   useEffect(() => {
-    fetchData('')
-  }, [])
+    if (SearchInput) {
+      debouncFunc(SearchInput);
+    } else {
+      fetchData();
+    }
+  }, [SearchInput]);
 
 
   const handleSort = (e) => {
@@ -43,27 +62,22 @@ function Products() {
   }
 
   const sortedProduct = [...Product].sort((a, b) => {
-    if(sortBy === 'price-up') {
-      return a.price - b.price;
-    }
-    if( sortBy === 'price-down') {
-      return b.price - a.price;
-    }
-    if(sortBy === 'rating-up') {
-      return a.rating - b.rating;
-    }
-    if(sortBy === 'rating-down') {
-      return b.rating - a.rating;
-    }
+   switch (sortBy) {
+    case 'price-up':
+      return a.price - b.price
+    case 'price-down':
+      return b.price - a.price
+    case 'rating-up':
+      return a.rating - b.rating
+    case 'rating-down':
+      return b.rating - a.rating
+    default:
+      return 0;
+   }
   })   
 
 
-useEffect(() => {
-  setProduct(sortedProduct)
-}, [sortBy])
-
 if(isLoading) return <Loading />
-
 
   return (
 
@@ -74,12 +88,12 @@ if(isLoading) return <Loading />
         value={SearchInput}
         onChange={(e) => setSearchInput(e.target.value)}
          />
-         <button onClick={() =>
-         {
+          {/* <button onClick={() =>{
           fetchData(SearchInput);
           setSearchInput('')
-          }}>Search</button>
+          }}>Search</button> */}
       </div>
+
       <div className="sorting">
         <p>Sort By: </p>
         <select name="sort" onChange={handleSort}>
@@ -95,7 +109,7 @@ if(isLoading) return <Loading />
         {nothingFound ? (
           <div className="not-found"><p>No product found</p></div>
         ) : (
-          Product.map(product => (
+          sortedProduct.map(product => (
             <div key={product.id} className='product-card'>
                 <div className="image">
                   <img src={product.images[0]} alt={product.title} />
