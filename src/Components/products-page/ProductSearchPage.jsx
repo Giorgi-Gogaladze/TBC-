@@ -17,7 +17,11 @@ function ProductSearchPage({ searchQuery }) {
   const router = useRouter();
 
   const handleSearch = (query) => {
-    router.push(query ? `?p=${query}` : '/', { shallow: true });
+    if(query) {
+      router.push(`/products/search?q=${query}`, {shallow: true});
+    } else (
+      router.push('/products', {shallow: true})
+    );
   };
 
   const debouncedSearch = useCallback(debounce(handleSearch, 1000), []);

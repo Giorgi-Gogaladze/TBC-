@@ -2,33 +2,42 @@
 import Link from 'next/link';
 import './Products.css';
 import ProductSearchPage from '../../Components/products-page/ProductSearchPage';
+import SortingOptions from '../../Components/products-page/SortingOptions'
 
-const fetchProducts = async (searchQuery) => {
-  const response = await fetch(
-    searchQuery 
-      ? `https://dummyjson.com/products/search?q=${searchQuery}` 
-      : `https://dummyjson.com/products`
-  );
+const fetchProducts = async (searchQuery, sortBy, order) =>{
+  let url = `https://dummyjson.com/products`;
 
-  if (!response.ok) throw new Error('Failed to fetch data');
-
-  const data = await response.json();
-  return data.products;
-};
-
-const Page = async ({ searchParams }) => {
-  const searchQuery = searchParams.p || '';
-  let products = [];
-
-  try {
-    products = await fetchProducts(searchQuery);
-  } catch (error) {
-    console.error(error);
+  if(searchQuery){
+    url += `/search?q=${searchQuery}`;
   }
+  if(sortBy && order) {
+    url += (searchQuery ? `&sortBy=${sortBy}&order=${order}` : `?sortBy=${sortBy}&order=${order}`)
+  }
+
+  const response = await  fetch(url)
+  if(!response.ok) throw new Error ('failed to fetch data, response is not OK')
+
+    const data = await response.json();
+    return data.products;
+}
+
+const Page = async ({searchParams}) => {
+const searchQuery = searchParams.q || '';
+const sortBy = searchParams.sortBy || '';
+const order = searchParams.order || '';
+
+
+let products = [];
+try {
+  products = await fetchProducts(searchQuery, sortBy, order)
+} catch (error) {
+  console.error(error)
+}
 
   return (
     <div className="products main-width">
       <ProductSearchPage searchQuery={searchQuery} />
+      <SortingOptions sortBy={sortBy} order={order} />
 
       <div className="product-cards">
         {products.length === 0 ? (
