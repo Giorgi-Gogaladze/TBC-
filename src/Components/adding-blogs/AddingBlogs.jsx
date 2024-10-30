@@ -1,21 +1,33 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function AddingBlogs({handleCreateBlogs}) {
+function AddingBlogs({handleCreateBlogs, handleEdit, editedBlogs}) {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
+
+    useEffect(() => {
+      if(editedBlogs){
+        setTitle(editedBlogs.title)
+        setBody(editedBlogs.body)
+      }
+    }, [editedBlogs])
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const newBlog = {
-            id: Date.now(),
-            
+            id: editedBlogs ? editedBlogs.id : Date.now(),  
             title,
             body
         }
 
-         handleCreateBlogs(newBlog)
+        
+        if( editedBlogs){
+          handleEdit(newBlog)
+        } else {
+          handleCreateBlogs(newBlog)
+        }
          setBody('')
          setTitle('')
     }

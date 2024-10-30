@@ -53,7 +53,7 @@ const Page = ({ searchParams }) => {
   };
 
   const handleSearchQueryChange = (query) => {
-    setSearchQuery(query); 
+    setSearchQuery(query);  
   };
 
   useEffect(() => {
