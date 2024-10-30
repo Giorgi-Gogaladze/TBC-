@@ -82,7 +82,7 @@ header .image h2 {
     align-items: center;
     gap: 2.8rem;
 }
-.login-button {
+.log-button {
     color: #fff;
     background: transparent;
     border: none;
@@ -92,7 +92,7 @@ header .image h2 {
     transition: transform 0.3s, color 0.1s;
 }
 
-.login-button:hover {
+.log-button:hover {
     color: blue;
     transform: scale(1.1);
 }

@@ -1,6 +1,5 @@
-'use client'; 
-import { useRouter } from 'next/navigation';
-import React, { useCallback, useEffect, useState } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 
 const debounce = (func, delay) => {
   let timeOut;
@@ -12,25 +11,18 @@ const debounce = (func, delay) => {
   };
 };
 
-function ProductSearchPage({ searchQuery }) {
+function ProductSearchPage({ onSearch, searchQuery }) {
   const [searchInput, setSearchInput] = useState(searchQuery || '');
-  const router = useRouter();
 
-  const handleSearch = (query) => {
-    if(query) {
-      router.push(`/products/search?q=${query}`, {shallow: true});
-    } else (
-      router.push('/products', {shallow: true})
-    );
-  };
-
-  const debouncedSearch = useCallback(debounce(handleSearch, 1000), []);
+  const handleSearch = debounce((query) => {
+    if (onSearch) {
+      onSearch(query);
+    }
+  }, 1000);
 
   useEffect(() => {
-    if (searchInput) {
-      debouncedSearch(searchInput);
-    }
-  }, [searchInput, debouncedSearch]);
+    handleSearch(searchInput);
+  }, [searchInput, handleSearch]);
 
   return (
     <div className="search">

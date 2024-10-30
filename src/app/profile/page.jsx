@@ -17,7 +17,6 @@ function Profile() {
                     <label >Email:</label>
                     <input type="email" name="email" value=' gogaladze.giorgi@tbcacademy.edu.ge' />
                 </form>
-                
             </div>
         </div>
     </article>

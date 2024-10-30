@@ -6,9 +6,12 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "js-cookie": "^3.0.5",
     "next": "^14.2.15",
+    "next-cookies": "^2.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "uuid": "^11.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

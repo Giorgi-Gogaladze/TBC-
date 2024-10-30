@@ -123,3 +123,94 @@
     color: rgb(87, 85, 85);
     font-weight: 600;
 }
+.imported-comps {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.search-and-sort {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.product-card img {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/Components/adding-products/AddingProducts.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+.product-card {
+    width: 17rem;
+    height: 22rem;
+    padding: 0.4rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product-card .image {
+    width: auto;
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+.product-card .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+    justify-content: center;
+}
+.info h2 {
+    color: rgb(255, 0, 0);
+}
+.info p {
+    font-weight: 700;
+}
+.info button {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0.3rem 0.4rem;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in;
+}
+.info button:hover {
+    transform: scale(1.05);
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+.inputs form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.product-cards {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
