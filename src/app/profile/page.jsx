@@ -1,24 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
-import Cookies from 'js-cookie';
 import Loading from '../../Components/loading/Loading';
+import {fetchUser} from '../../Utilities/fetchUser';
 
-async function fetchProfile() {
-  const token = Cookies.get('accessToken');
-
-  const response = await fetch('https://dummyjson.com/auth/me', {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`profile info didn't fetch`);
-  }
-  return response.json();
-}
 
 function Profile() {
   const [profileData, setProfileData] = useState(null);
@@ -27,7 +12,7 @@ function Profile() {
  useEffect(() => {
   const getProfileData = async () => {
     try {
-      const data = await fetchProfile();
+      const data = await fetchUser();
       setProfileData(data);
     } catch (error) {
       console.log(error) 

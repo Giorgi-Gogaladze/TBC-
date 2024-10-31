@@ -3,10 +3,25 @@ import './Authentication.css';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { fetchUser } from '../../../Utilities/fetchUser';
+import { useEffect, useState } from 'react';
 
 
-function Authentication() {
+ function Authentication() {
+  const [userData, setUserData] =useState([])
   const router = useRouter();
+
+  useEffect(() => {
+    async function getData() {
+       try {
+      const data = await fetchUser();
+      setUserData(data)
+    } catch (error) {
+      console.log(error)
+    }
+    }
+    getData()
+  },[])
 
   const handleLogOut = ()  => {
     Cookies.remove('accessToken')
@@ -20,7 +35,7 @@ function Authentication() {
         </button>
         <Link href="/profile">
       <div className="user-image">
-        <img src='/assets/Norton.jpg' alt="image" />
+        <img src={userData.image} alt="suerImage" />
       </div>
       </Link>
     </section> 
