@@ -31,10 +31,6 @@ function Footer() {
                 </li>
                 <span className="divider">|</span>
                 <li>
-                    <Link href="/profile">PROFILE</Link>
-                </li>
-                <span className="divider">|</span>
-                <li>
                     <Link href="/products">PRODUCTS</Link>
                 </li>
             </ul>

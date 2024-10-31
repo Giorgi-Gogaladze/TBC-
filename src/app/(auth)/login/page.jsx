@@ -36,6 +36,10 @@ useEffect(() => {
   }
 }, [router]);
 
+if(isLoading) {
+  <Loading />
+}
+
   return (
     <section className='login'>
       <div className='login-inner-div'>

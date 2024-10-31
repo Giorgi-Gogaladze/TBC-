@@ -2,6 +2,8 @@
 import './Authentication.css';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
+import Link from 'next/link';
+
 
 function Authentication() {
   const router = useRouter();
@@ -16,7 +18,11 @@ function Authentication() {
           <button className="log-button" onClick={handleLogOut}>
           Log Out
         </button>
-      <button className="signup-button">Sign Up</button>
+        <Link href="/profile">
+      <div className="user-image">
+        <img src='/assets/Norton.jpg' alt="image" />
+      </div>
+      </Link>
     </section> 
   )
 }
