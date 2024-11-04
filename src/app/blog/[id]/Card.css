@@ -1,8 +1,8 @@
  .card-wrapper {
-    background-color: rgba(0, 0, 0, 0.925);
+    /* background-color: rgba(0, 0, 0, 0.925); */
     width:100% ;
     min-height: 61.3vh;
-    color: #fff;
+    /* color: #fff; */
     display: flex;
     align-items: center;
     justify-content: center;

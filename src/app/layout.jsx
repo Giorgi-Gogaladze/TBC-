@@ -5,7 +5,7 @@ import Header from '../Components/header/Header';
 import Footer from '../Components/footer/Footer';
 import AuthChecker from '../Components/auth-checker/AuthChecker';
 import { usePathname } from 'next/navigation';
-import { metadata } from './metadata';
+import { metadata } from '../Utilities/metadata';
 
 
 

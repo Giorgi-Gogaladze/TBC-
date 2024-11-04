@@ -2,9 +2,10 @@
 import './Authentication.css';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import Link from 'next/link';
 import { fetchUser } from '../../../Utilities/fetchUser';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import ThemeSelector from '../../theme-selector/ThemeSelector';
 
 
  function Authentication() {
@@ -38,6 +39,7 @@ import { useEffect, useState } from 'react';
         <img src={userData.image} alt="suerImage" />
       </div>
       </Link>
+      <ThemeSelector />
     </section> 
   )
 }
