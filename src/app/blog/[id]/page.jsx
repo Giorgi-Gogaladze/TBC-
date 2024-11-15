@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css'
 import Link from 'next/link';
+import AddingBlogs from '../../../Components/adding-blogs/AddingBlogs';
 async function fetchCards(id) {
   try {
     const response = await fetch(`https://dummyjson.com/posts/${id}`);

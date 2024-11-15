@@ -36,7 +36,7 @@ export default async function ProductCard({ params }) {
       <h1>{product.brand}</h1>
       <div className="inner-container">
         <div className="for-image">
-          <img src={product.images ? product.images[0] : 'default-image-url'} alt="product image" />
+          <img src={product.thumbnail ? product.thumbnail : 'default-image-url'} alt="product image" />
         </div>
         <div className="info-container">
           <h2>Rating: {product.rating}⭐</h2>
