@@ -1,37 +1,44 @@
-import { useState, useEffect } from 'react';
+
+'use client'
+import React from 'react'
+import { useState } from 'react';
+import { useEffect } from 'react';
+import './Theme-selector.css'
 
 const ThemeSelector = () => {
-    const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'systemic');
+    const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
 
     const chooseTheme = (selectedTheme) => {
-        if (selectedTheme === 'light') {
+        if(selectedTheme === 'light') {
             document.body.style.backgroundColor = '#ececec';
             document.body.style.color = '#000';
-        } else if (selectedTheme === 'dark') {
+        }
+        else if (selectedTheme === 'dark') {
             document.body.style.backgroundColor = '#333';
             document.body.style.color = '#fff';
-        } else if (selectedTheme === 'systemic') {
-            document.body.style.backgroundColor = '#87CEEB'; 
-            document.body.style.color = '#000';
         }
-    };
+    }
 
-    useEffect(() => {
+    useEffect (() => {
         chooseTheme(theme);
-    }, [theme]);
+        localStorage.setItem('theme', theme)
+    }, [theme])
 
-    useEffect(() => {
-        localStorage.setItem('theme', theme);
-    }, [theme]);
+    const toggleTheme = () => {
+        setTheme((prevtheme) => (prevtheme === 'light' ? 'dark' : 'light'));
+    }
+  return (
+    <div>
+        <label className="label">
+            <input
+                type="checkbox"
+                checked={theme === 'dark'} 
+                onChange={toggleTheme}
+            />
+            <span className="slider"></span>
+        </label>
+   </div>
+  )
+}
 
-    return (
-        <select value={theme} onChange={(e) => setTheme(e.target.value)} >
-            <option > Choose theme</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="systemic">Systemic</option>
-        </select>
-    );
-};
-
-export default ThemeSelector;
+export default ThemeSelector
