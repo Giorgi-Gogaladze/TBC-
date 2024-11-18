@@ -1,23 +1,23 @@
-'use client'
-import { usePathname } from '@/i18n/routing';
-import { useRouter } from 'next/navigation'
+"use client";
+import { usePathname } from "@/i18n/routing";
+import { useRouter } from "next/navigation";
 
 const LanguageSelector = () => {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname;
 
   const handleLanguageChange = (locale: string) => {
-    if(pathname.includes('about-us')){
-      router.push(`/${locale}/about-us`)
+    if (pathname.includes("about-us")) {
+      router.push(`/${locale}/about-us`);
     } else {
-      router.push(`/${pathname}`)
+      router.push(`/${pathname}`);
     }
-  }
+  };
   return (
     <div>
-      <button onClick={() => handleLanguageChange('en')}>En</button>
-      <button onClick={() => handleLanguageChange('gr')}>Ge</button>
+      <button onClick={() => handleLanguageChange("en")}>En</button>
+      <button onClick={() => handleLanguageChange("gr")}>Ge</button>
     </div>
-  )
-}
-export default LanguageSelector
+  );
+};
+export default LanguageSelector;
