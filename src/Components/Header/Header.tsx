@@ -1,9 +1,14 @@
 import React from 'react';
 import './Header.css';
-import Navbar from './navbar/Navbar';
-import Authentication from './authentication/Authentication';
+import Navbar from './Navbar/Navbar';
+import Authentication from './Authentication/Authentication';
+import LanguageSelector from '@/Utilities/LanguageSelector';
 
-const Header = () => {
+interface HeaderProps {
+  locale: 'en' | 'gr';
+
+}
+const Header = ({locale}: HeaderProps) => {
   return (
     <header className='main-width header'>
       <div className="logo">
@@ -12,7 +17,8 @@ const Header = () => {
           <h2>UNI-WEB</h2>
         </div>
       </div>
-      <Navbar />
+      <Navbar locale={locale}  />
+      <LanguageSelector />
       <Authentication />
     </header>
   );

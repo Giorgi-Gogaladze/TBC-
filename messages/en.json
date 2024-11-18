@@ -1,6 +1,5 @@
 {
-    "'HomePage": {
-        "title": "Hello World!",
-        "about": "Go to the about page"
+    "AboutUs": {
+        "content": "The project was created using create-react-app, which is 'run' with the npm start command. React Router is used for navigation between different pages. Routes have been created and specified to render the appropriate pages. The website is designed for all kinds of information. It is not responsive and does not yet utilize core React features."
     }
 }
