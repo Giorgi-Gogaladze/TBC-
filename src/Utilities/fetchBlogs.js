@@ -1,8 +1,10 @@
 export async function fetchBlogs() {
-    const response = await fetch ('https://dummyjson.com/posts')
-    if(!response.ok){
-        throw new Error('Failed to fetch blogs')
-    }
-    const data = await response.json()
-    return data.posts
+  try {
+    const res = await fetch("http://localhost:3000/api/getPosts");
+    const data = await res.json();
+    return data.posts;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
 }
