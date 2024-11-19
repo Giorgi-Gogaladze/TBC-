@@ -1,5 +1,4 @@
 import "./Blog.css";
-import Link from "next/link";
 import { fetchBlogs } from "../../Utilities/fetchBlogs";
 
 export default async function Blog() {
@@ -17,9 +16,6 @@ export default async function Blog() {
         <div className="card" key={post.id}>
           <h2>{post.title}</h2>
           <p>{post.description}</p>
-          <Link href={`/blog/${post.id}`}>
-            <button className="see-more">See More</button>
-          </Link>
         </div>
       ))}
     </section>
