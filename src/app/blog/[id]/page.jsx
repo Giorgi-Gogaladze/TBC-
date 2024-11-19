@@ -1,18 +1,17 @@
-import React from 'react';
-import './Card.css'
-import Link from 'next/link';
-import AddingBlogs from '../../../Components/adding-blogs/AddingBlogs';
+import React from "react";
+import "./Card.css";
+
 async function fetchCards(id) {
   try {
-    const response = await fetch(`https://dummyjson.com/posts/${id}`);
+    const response = await fetch(`http://localhost:3000/api/getPosts/${id}`);
     if (!response.ok) {
-      console.log('post not found');
+      console.error("Post not found:", response.statusText);
       return null;
     }
-    const data = await response.json();
-    return data; 
+    const { post } = await response.json();
+    return post;
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching post:", error);
     return null;
   }
 }
@@ -20,31 +19,21 @@ async function fetchCards(id) {
 export default async function Card({ params }) {
   let post;
   try {
-    post = await fetchCards(params.id); 
+    post = await fetchCards(params.id);
     if (!post) {
       return <div>Post not found.</div>;
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error rendering the post:", error);
+    return <div>An error occurred while fetching the post.</div>;
   }
 
   return (
-    <div className='main-width card-wrapper'>
-      <div className='card-inside-wrapper'>
+    <div className="main-width card-wrapper">
+      <div className="card-inside-wrapper">
+        <h1>{post.id}</h1>
         <h2>{post.title}</h2>
-        <p>{post.body}</p>
-        <div className='tags'>
-        <p>Tags:</p>
-        {post.tags.map(tag => {
-            return <span key={tag} className='tag'>#{tag}</span>;
-          })}
-        </div>
-        <div className='flex'>
-          <p><span className='golden'>Views:</span> {post.views}</p>
-          <p><span className='golden'>Likes:</span> {post.reactions.likes}</p>
-          <p><span className='golden'>Dislikes:</span> {post.reactions.dislikes}</p>
-          <Link href={'/blog'}><button className='back-to-cards'>Back to the cards</button></Link>
-        </div>
+        <p>{post.description}</p>
       </div>
     </div>
   );
