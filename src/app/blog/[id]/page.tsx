@@ -1,7 +1,19 @@
 import React from "react";
 import "./Card.css";
 
-async function fetchCards(id) {
+interface BlogPost {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface CardProps {
+  params: {
+    id: string;
+  };
+}
+
+async function fetchCards(id: string): Promise<BlogPost | null> {
   try {
     const response = await fetch(`http://localhost:3000/api/getPosts/${id}`);
     if (!response.ok) {
@@ -9,15 +21,16 @@ async function fetchCards(id) {
       return null;
     }
     const { post } = await response.json();
-    return post;
+    return post as BlogPost;
   } catch (error) {
     console.error("Error fetching post:", error);
     return null;
   }
 }
 
-export default async function Card({ params }) {
-  let post;
+export default async function Card({ params }: CardProps) {
+  let post: BlogPost | null = null;
+
   try {
     post = await fetchCards(params.id);
     if (!post) {
