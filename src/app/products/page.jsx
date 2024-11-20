@@ -69,8 +69,6 @@ const Page = ({ searchParams }) => {
     displayProds();
   }, [searchQuery, sortBy, order]);
 
-  console.log(fetchedProds);
-
   const unitedProds = [...createdProds, ...fetchedProds];
 
   return (

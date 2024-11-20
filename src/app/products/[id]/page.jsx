@@ -3,23 +3,23 @@ import './Product.css';
 
 async function fetchProduct(id) {
   try {
-    const response = await fetch(`https://dummyjson.com/products/${id}`);
+    const response = await fetch(`http://localhost:3000/api/getProducts/${id}`);
     if (!response.ok) {
       return null;
     }
     const data = await response.json();
-    return data;
+    return data.post;
   } catch (error) {
-    console.log( error);
+    console.log(error);
     return null;
   }
 }
 
 export default async function ProductCard({ params }) {
   let product;
+  console.log(params.id);
   try {
-    product = await fetchProduct(params.id); 
-
+    product = await fetchProduct(params.id);
     if (!product) {
       return <div>product not found.</div>;
     }
@@ -28,25 +28,28 @@ export default async function ProductCard({ params }) {
   }
 
   if (!product) {
-    return <div>product not found.</div>; 
+    return <div>product not found.</div>;
   }
-
+  console.log(product);
   return (
-    <div className="main-card">
+    <div className='main-card'>
       <h1>{product.brand}</h1>
-      <div className="inner-container">
-        <div className="for-image">
-          <img src={product.thumbnail ? product.thumbnail : 'default-image-url'} alt="product image" />
+      <div className='inner-container'>
+        <div className='for-image'>
+          <img
+            src={product.img ? product.img : 'default-image-url'}
+            alt='product image'
+          />
         </div>
-        <div className="info-container">
+        <div className='info-container'>
           <h2>Rating: {product.rating}⭐</h2>
-          <h1 className="title">{product.title}</h1>
-          <p className="availability">{product.availabilityStatus}</p>
+          <h1 className='title'>{product.title}</h1>
+          <p className='availability'>{product.availabilityStatus}</p>
           <h3>Price: {product.price}$</h3>
-          <p className="description">{product.description}</p>               
-          <button className="button">Add To The Cart</button>                               
+          <p className='description'>{product.comments}</p>
+          <button className='button'>Add To The Cart</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
