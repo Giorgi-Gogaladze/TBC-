@@ -1,25 +1,16 @@
-'use client'
 import "./Blog.css";
 import { fetchBlogs } from "../../Utilities/fetchBlogs";
-import { useEffect, useState } from "react";
-
-interface Blog {
+import Button from "@/Components/Button/Button";
+ 
+interface BlogPost {
   id: number;
   title: string;
   description: string;
 }
-
-export default  function Blog() {
-  const [posts, setPosts] = useState<Blog[]>([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchBlogs();
-      setPosts(data);
-    };
-    fetchData();
-  }, [])
-  
+ 
+export default async function Blog() {
+  const posts: BlogPost[] = await fetchBlogs();
+ 
   return (
     <section className="main-width blog">
       <div>
@@ -33,8 +24,10 @@ export default  function Blog() {
         <div className="card" key={post.id}>
           <h2>{post.title}</h2>
           <p>{post.description}</p>
+          <Button postsId={post.id} />
         </div>
       ))}
     </section>
   );
 }
+ 
