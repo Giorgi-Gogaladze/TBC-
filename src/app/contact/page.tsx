@@ -12,7 +12,7 @@ function Contact() {
         <h1>Contact Us</h1>
           <input type="text" name="name"  placeholder='Name...'/>
           <input type="email" name="emali" placeholder='Emali...' />
-          <textarea type="text" name="mes" placeholder='Message...'/>
+          <textarea name="mes" placeholder='Message...'/>
           <button>contact</button>
         </form>
       </div>

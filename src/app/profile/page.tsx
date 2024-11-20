@@ -4,9 +4,14 @@ import './Profile.css';
 import Loading from '../../Components/loading/Loading';
 import {fetchUser} from '../../Utilities/fetchUser';
 
-
+interface ProfileData {
+  image: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 function Profile() {
-  const [profileData, setProfileData] = useState(null);
+  const [profileData, setProfileData] = useState <ProfileData | null>(null);
 
 
  useEffect(() => {

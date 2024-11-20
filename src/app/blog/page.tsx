@@ -1,8 +1,25 @@
+'use client'
 import "./Blog.css";
 import { fetchBlogs } from "../../Utilities/fetchBlogs";
+import { useEffect, useState } from "react";
 
-export default async function Blog() {
-  const posts = await fetchBlogs();
+interface Blog {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export default  function Blog() {
+  const [posts, setPosts] = useState<Blog[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchBlogs();
+      setPosts(data);
+    };
+    fetchData();
+  }, [])
+  
   return (
     <section className="main-width blog">
       <div>

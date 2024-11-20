@@ -1,8 +1,21 @@
 import React from 'react';
 import './Card.css'
 import Link from 'next/link';
-import AddingBlogs from '../../../Components/adding-blogs/AddingBlogs';
-async function fetchCards(id) {
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+  tags: string[]
+  views: number
+  reactions:{
+    likes: number;
+    dislikes: number;
+  }
+
+
+}
+async function fetchCards(id : number): Promise <Post | null> {
   try {
     const response = await fetch(`https://dummyjson.com/posts/${id}`);
     if (!response.ok) {
@@ -10,15 +23,21 @@ async function fetchCards(id) {
       return null;
     }
     const data = await response.json();
-    return data; 
+    return data as Post; 
   } catch (error) {
     console.log(error);
     return null;
   }
 }
+interface Params {
+  params: {
+     id: number;
+  }
+}
 
-export default async function Card({ params }) {
-  let post;
+
+export default async function Card({ params } : Params) {
+  let post: Post | null = null;
   try {
     post = await fetchCards(params.id); 
     if (!post) {
@@ -26,6 +45,10 @@ export default async function Card({ params }) {
     }
   } catch (error) {
     console.error(error);
+  }
+
+  if (!post) {
+    return <div>post not found.</div>; 
   }
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-const Home = () => {
+const Home : React.FC = () => {
   return (
     <div style={{height: "80vh"}}>
       <h1>Welcome to Our Website</h1>
