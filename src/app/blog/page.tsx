@@ -1,8 +1,16 @@
 import "./Blog.css";
 import { fetchBlogs } from "../../Utilities/fetchBlogs";
+import Button from "@/Components/Button/Button";
+
+interface BlogPost {
+  id: number;
+  title: string;
+  description: string;
+}
 
 export default async function Blog() {
-  const posts = await fetchBlogs();
+  const posts: BlogPost[] = await fetchBlogs();
+
   return (
     <section className="main-width blog">
       <div>
@@ -16,6 +24,7 @@ export default async function Blog() {
         <div className="card" key={post.id}>
           <h2>{post.title}</h2>
           <p>{post.description}</p>
+          <Button postsId={post.id} />
         </div>
       ))}
     </section>
