@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { fetchLogin } from '../../../Utilities/fetchLogin';
-import './login.css'
 import Loading from '../../../Components/loading/Loading';
 
 

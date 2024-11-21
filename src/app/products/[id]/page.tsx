@@ -49,23 +49,24 @@ export default async function ProductCard({ params }: ProductCard) {
 
   return (
     <div className='main-card'>
-      {/* <h1>{product.brand}</h1> */}
-      <div className='inner-container'>
-        <div className='for-image'>
-          <img
-            src={product.img ? product.img : 'default-image-url'}
-            alt='product image'
-          />
-        </div>
-        <div className='info-container'>
-          <h2>Rating: {product.rating}⭐</h2>
-          <h1 className='title'>{product.name}</h1>
-          {/* <p className='availability'>{product.availabilityStatus}</p> */}
-          <h3>Price: {product.price}$</h3>
-          <p className='description'>{product.comments}</p>
-          <button className='button'>Add To The Cart</button>
-        </div>
-      </div>
+  {/* <h1>{product.brand}</h1> */}
+  <div className='inner-container'>
+    <div className='for-image'>
+      <img
+        src={product.img ? product.img : 'default-image-url'}
+        alt='product image'
+      />
     </div>
+    <div className='info-container'>
+      <h2>Rating: {product.rating}⭐</h2>
+      <h1 className='title'>{product.name}</h1>
+      {/* <p className='availability'>{product.availabilityStatus}</p> */}
+      <h3>Price: ${product.price}</h3>
+      <p className='description'>{product.comments}</p>
+      <button className='button'>Add To The Cart</button>
+    </div>
+  </div>
+</div>
+
   );
 }
