@@ -1,7 +1,23 @@
 import React from 'react';
 import './Product.css';
 
-async function fetchProduct(id) {
+interface ProductCard {
+  params: {
+    id: number;
+  };
+}
+
+interface fetchProduct {
+  id: string;
+  created_at: string;
+  name: string;
+  price: number;
+  img: string;
+  rating: number;
+  comments: string;
+}
+
+async function fetchProduct(id: number): Promise<fetchProduct | null> {
   try {
     const response = await fetch(`http://localhost:3000/api/getProducts/${id}`);
     if (!response.ok) {
@@ -15,9 +31,9 @@ async function fetchProduct(id) {
   }
 }
 
-export default async function ProductCard({ params }) {
+export default async function ProductCard({ params }: ProductCard) {
   let product;
-  console.log(params.id);
+
   try {
     product = await fetchProduct(params.id);
     if (!product) {
@@ -30,10 +46,10 @@ export default async function ProductCard({ params }) {
   if (!product) {
     return <div>product not found.</div>;
   }
-  console.log(product);
+
   return (
     <div className='main-card'>
-      <h1>{product.brand}</h1>
+      {/* <h1>{product.brand}</h1> */}
       <div className='inner-container'>
         <div className='for-image'>
           <img
@@ -43,8 +59,8 @@ export default async function ProductCard({ params }) {
         </div>
         <div className='info-container'>
           <h2>Rating: {product.rating}⭐</h2>
-          <h1 className='title'>{product.title}</h1>
-          <p className='availability'>{product.availabilityStatus}</p>
+          <h1 className='title'>{product.name}</h1>
+          {/* <p className='availability'>{product.availabilityStatus}</p> */}
           <h3>Price: {product.price}$</h3>
           <p className='description'>{product.comments}</p>
           <button className='button'>Add To The Cart</button>
