@@ -1,18 +1,18 @@
 import React from "react";
 import "./Card.css";
-
+ 
 interface BlogPost {
   id: number;
   title: string;
   description: string;
 }
-
+ 
 interface CardProps {
   params: {
     id: string;
   };
 }
-
+ 
 async function fetchCards(id: string): Promise<BlogPost | null> {
   try {
     const response = await fetch(`http://localhost:3000/api/getPosts/${id}`);
@@ -27,10 +27,10 @@ async function fetchCards(id: string): Promise<BlogPost | null> {
     return null;
   }
 }
-
+ 
 export default async function Card({ params }: CardProps) {
   let post: BlogPost | null = null;
-
+ 
   try {
     post = await fetchCards(params.id);
     if (!post) {
@@ -40,7 +40,7 @@ export default async function Card({ params }: CardProps) {
     console.error("Error rendering the post:", error);
     return <div>An error occurred while fetching the post.</div>;
   }
-
+ 
   return (
     <div className="main-width card-wrapper">
       <div className="card-inside-wrapper">
@@ -51,3 +51,4 @@ export default async function Card({ params }: CardProps) {
     </div>
   );
 }
+ 

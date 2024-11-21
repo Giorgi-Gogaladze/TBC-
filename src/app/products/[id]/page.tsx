@@ -1,7 +1,19 @@
 import React from 'react';
 import './Product.css';
 
-async function fetchProduct(id) {
+interface EachProduct {
+  id: number
+  brand: string
+  thumbnail: string
+  price: number
+  image: string
+  rating: number
+  title: string
+  availabilityStatus: string
+  description: string
+}
+
+async function fetchProduct(id : number) : Promise<EachProduct | null> {
   try {
     const response = await fetch(`https://dummyjson.com/products/${id}`);
     if (!response.ok) {
@@ -15,7 +27,13 @@ async function fetchProduct(id) {
   }
 }
 
-export default async function ProductCard({ params }) {
+interface Param {
+  params : {
+    id : number;
+  }
+}
+
+export default async function ProductCard({ params } : Param) {
   let product;
   try {
     product = await fetchProduct(params.id); 

@@ -6,7 +6,19 @@ import SortingOptions from '../../Components/products-page/SortingOptions';
 import AddingProducts from '../../Components/adding-products/AddingProducts';
 import { useEffect, useState } from 'react';
 
-const fetchProducts = async (searchQuery, sortBy, order) => {
+
+interface Product {
+  id: number;
+  title: string;
+  brand: string;
+  price: number;
+  rating: number;
+  thumbnail: string;
+  availabilityStatus: string;
+  description: string;
+}
+
+const fetchProducts = async (searchQuery : string, sortBy : string, order : string) : Promise<Product[]> => {
   let url = `https://dummyjson.com/products`;
 
   if (searchQuery) {
@@ -23,38 +35,45 @@ const fetchProducts = async (searchQuery, sortBy, order) => {
   return data.products;
 };
 
-const Page = ({ searchParams }) => {
+interface Searchparams {
+  searchParams : {
+    q: string;
+    sortBy: string;
+    order: string;
+  }
+}
+const Page = ({ searchParams } : Searchparams) => {
   const initialSearchQuery = searchParams.q || '';
   const sortBy = searchParams.sortBy || '';
   const order = searchParams.order || '';
 
-  const [fetchedProds, setFetchedProds] = useState([]);
-  const [createdProds, setCreatedProds] = useState([]);
-  const [editData, setEditData] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
+  const [fetchedProds, setFetchedProds] = useState<Product[]>([]);
+  const [createdProds, setCreatedProds] = useState<Product[]>([]);
+  const [editData, setEditData] = useState<Product | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>(initialSearchQuery);
 
-  const handleCreatedProds = (newProd) => {
+  const handleCreatedProds = (newProd : Product) => {
     setCreatedProds((prev) => [...prev, newProd]);
   };
 
-  const deleteProduct = (ID) => {
+  const deleteProduct = (ID : number) => {
     setCreatedProds((prev) => prev.filter(prod => prod.id !== ID));
   };
 
-  const handleEdit = (product) => {
+  const handleEdit = (product : Product) => {
     setCreatedProds((prev) => 
       prev.map((prod) => (prod.id === product.id ? product : prod))
     );
     setEditData(null); 
   };
 
-  const editProductInitiation = (product) => {
+  const editProductInitiation = (product : Product) => {
     setEditData(product);
   };
 
-  const handleSearchQueryChange = (query) => {
-    setSearchQuery(query);  
-  };
+  const handleSearchQueryChange = (query :string) => {
+    setSearchQuery(query );  
+  }
 
   useEffect(() => {
     const displayProds = async () => {
