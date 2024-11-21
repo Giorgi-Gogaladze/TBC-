@@ -42,7 +42,7 @@ export default async function Card({ params }: CardProps) {
   }
  
   return (
-    <div className="main-width card-wrapper">
+    <div className="main-width w-full flex items-center justify-center">
       <div className="card-inside-wrapper">
         <h1>{post.id}</h1>
         <h2>{post.title}</h2>
