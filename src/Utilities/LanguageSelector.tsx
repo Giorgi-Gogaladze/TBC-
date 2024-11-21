@@ -1,7 +1,6 @@
 "use client";
 
-import { usePathname } from "@/i18n/routing";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const LanguageSelector: React.FC = () => {
   const router = useRouter();
