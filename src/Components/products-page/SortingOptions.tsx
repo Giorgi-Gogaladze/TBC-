@@ -1,15 +1,16 @@
 'use client'
+
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import { SortingOptionsProps } from './interfaces/SortingOptionsProps'
 
-const SortingOptions = ({sortBy, order}) => {
+const SortingOptions: React.FC<SortingOptionsProps> = ({sortBy, order}) => {
     const router = useRouter()
 
-    const handleSort = (e) => {
-        const event = e.target.value
-        const [sortBy, order] = event.split('-');
+    const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const [newSortBy, newOrder] = e.target.value.split('-') as [string, 'asc' | 'desc']
 
-        router.push(`?sortBy=${sortBy}&order=${order}`, {shallow: true})
+        router.push(`?sortBy=${newSortBy}&order=${newOrder}`)
     }
     
     return (

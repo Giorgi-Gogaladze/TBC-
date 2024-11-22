@@ -2,37 +2,46 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './AddingProducts.css';
+import { Product, AddingProductsProps } from './interfaces/product';
 
-function AddingProducts({ handleCreatedProds, editData, handleEdit }) {
-  const [brand, setBrand] = useState('');
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [stock, setStock] = useState('');
-  const [thumbnail, setThumbnail] = useState('');
-  const [desc, setDesc] = useState('');
+const AddingProducts: React.FC<AddingProductsProps> = ({
+  handleCreatedProds,
+  handleEdit,
+  editData,
+}) => {
+  const [brand, setBrand] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
+  const [price, setPrice] = useState<string>('');
+  const [stock, setStock] = useState<string>('');
+  const [thumbnail, setThumbnail] = useState<string>('');
+  const [desc, setDesc] = useState<string>('');
 
   useEffect(() => {
     if (editData) {
       setBrand(editData.brand);
       setTitle(editData.title);
-      setPrice(editData.price);
+      setPrice(editData.price.toString());
       setStock(editData.availabilityStatus);
-      setThumbnail(editData.thumbnail);
+      setThumbnail(editData.thumbnail[0] || '');
       setDesc(editData.description);
     } else {
-      setBrand('');
-      setTitle('');
-      setPrice('');
-      setStock('');
-      setThumbnail('');
-      setDesc('');
+      resetForm()
     }
   }, [editData]);
 
-  const handleSubmit = (e) => {
+  const resetForm = () => {
+    setBrand('')
+    setTitle('')
+    setPrice('')
+    setStock('')
+    setThumbnail('')
+    setDesc('')
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newProduct = {
+    const newProduct: Product = {
       id: editData ? editData.id : uuidv4(),
       brand,
       title,
@@ -48,12 +57,7 @@ function AddingProducts({ handleCreatedProds, editData, handleEdit }) {
       handleCreatedProds(newProduct);
     }
 
-    setBrand('');
-    setTitle('');
-    setPrice('');
-    setStock('');
-    setThumbnail('');
-    setDesc('');
+    resetForm()
   };
 
   return (
