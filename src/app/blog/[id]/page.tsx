@@ -42,13 +42,14 @@ export default async function Card({ params }: CardProps) {
   }
  
   return (
-    <div className="main-width card-wrapper">
-      <div className="card-inside-wrapper">
-        <h1>{post.id}</h1>
-        <h2>{post.title}</h2>
-        <p>{post.description}</p>
-      </div>
-    </div>
+    <div className="main-width card-wrapper w-full min-h-[61.3vh] flex items-center justify-center">
+  <div className="card-inside-wrapper flex flex-col gap-4 items-center">
+    <h1>{post.id}</h1>
+    <h2 className="text-gold text-4xl font-extrabold">{post.title}</h2>
+    <p className="text-white text-lg font-light">{post.description}</p>
+  </div>
+</div>
+
   );
 }
  

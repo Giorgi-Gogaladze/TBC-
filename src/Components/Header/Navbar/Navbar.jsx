@@ -1,20 +1,38 @@
 import React from 'react';
-import './Navbar.css';
 import Link from 'next/link';
 
 function Navbar({locale}) {
   return (
-    
-    <nav className='navbar'>
-      <ul>
-        <li><Link href="/">Home</Link></li>
-        <li><Link href={`/${locale}/about-us`}>About Us</Link></li>
-        <li><Link href="/contact">Contact</Link></li>
-        <li><Link href="/blog">Blog</Link></li>
-        <li><Link href="/products">Products</Link></li>
+    <nav className="navbar">
+      <ul className="flex gap-11">
+        <li className="list-none font-sans">
+          <Link href="/" className="text-white no-underline capitalize font-medium transition-transform duration-300 hover:scale-110 hover:font-bold">
+            Home
+          </Link>
+        </li>
+        <li className="list-none font-sans">
+          <Link href={`/${locale}/about-us`} className="text-white no-underline capitalize font-medium transition-transform duration-300 hover:scale-110 hover:font-bold">
+            About Us
+          </Link>
+        </li>
+        <li className="list-none font-sans">
+          <Link href="/contact" className="text-white no-underline capitalize font-medium transition-transform duration-300 hover:scale-110 hover:font-bold">
+            Contact
+          </Link>
+        </li>
+        <li className="list-none font-sans">
+          <Link href="/blog" className="text-white no-underline capitalize font-medium transition-transform duration-300 hover:scale-110 hover:font-bold">
+            Blog
+          </Link>
+        </li>
+        <li className="list-none font-sans">
+          <Link href="/products" className="text-white no-underline capitalize font-medium transition-transform duration-300 hover:scale-110 hover:font-bold">
+            Products
+          </Link>
+        </li>
       </ul>
     </nav>
   );
-}
+  }
 
 export default Navbar;
