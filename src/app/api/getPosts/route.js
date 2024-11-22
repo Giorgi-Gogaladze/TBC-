@@ -13,14 +13,20 @@ export async function GET(req) {
     }
     return new Response(JSON.stringify({ posts }), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, max-age=0",
+      },
     });
   } catch (err) {
     return new Response(
       JSON.stringify({ error: "An unexpected error occurred" }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store, max-age=0",
+        },
       }
     );
   }

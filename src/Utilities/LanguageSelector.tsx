@@ -1,20 +1,18 @@
 "use client";
-
 import { usePathname } from "@/i18n/routing";
 import { useRouter } from "next/navigation";
 
-const LanguageSelector: React.FC = () => {
+const LanguageSelector = () => {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname;
 
   const handleLanguageChange = (locale: string) => {
     if (pathname.includes("about-us")) {
       router.push(`/${locale}/about-us`);
     } else {
-      router.push(`/${locale}${pathname}`);
+      router.push(`/${pathname}`);
     }
   };
-
   return (
     <div>
       <button onClick={() => handleLanguageChange("en")}>En</button>
@@ -22,5 +20,4 @@ const LanguageSelector: React.FC = () => {
     </div>
   );
 };
-
 export default LanguageSelector;
