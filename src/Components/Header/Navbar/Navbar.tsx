@@ -1,7 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 
-function Navbar({locale}) {
+interface NavbarProps {
+  locale: string
+}
+
+const Navbar: React.FC<NavbarProps> = ({ locale }) => {
   return (
     <nav className="navbar">
       <ul className="flex gap-11">
@@ -33,6 +37,6 @@ function Navbar({locale}) {
       </ul>
     </nav>
   );
-  }
+}
 
 export default Navbar;

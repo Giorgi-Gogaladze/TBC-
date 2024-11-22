@@ -1,10 +1,14 @@
 'use client'
-import { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
-const AuthChecker = ({ children }) => {
+interface AuthCheckerProps {
+  children: ReactNode
+}
+
+const AuthChecker: React.FC<AuthCheckerProps> = ({ children }) => {
   const router = useRouter();
   const pathname = usePathname();
   const token = Cookies.get('accessToken');
@@ -13,17 +17,19 @@ const AuthChecker = ({ children }) => {
     if (!token && pathname !== '/login') {
       router.push('/login');
     }
-  }, [pathname,token, router]);
+  }, [pathname, token, router]);
 
   if (!token && pathname === '/login') {
-    <Link to="/login" ><button>go to login</button></Link>
+    return (
+      <div>
+        <Link href="/login" >
+          <button>go to login</button>
+        </Link>
+      </div>
+    )
   }
 
-  return (
-    <>     
-      {children}
-    </>
-  );
+  return <>{children}</>
 };
 
 export default AuthChecker;

@@ -6,10 +6,10 @@ import { fetchUser } from '../../../Utilities/fetchUser';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ThemeSelector from '../../theme-selector/ThemeSelector';
+import { UserData } from './interfaces/user';
 
-
- function Authentication() {
-  const [userData, setUserData] =useState([])
+const Authentication: React.FC = () => {
+  const [userData, setUserData] = useState<UserData | null>(null)
   const router = useRouter();
 
   useEffect(() => {
@@ -30,17 +30,21 @@ import ThemeSelector from '../../theme-selector/ThemeSelector';
   }
 
   return (
-     <section className='authentication'>
-          <button className="log-button" onClick={handleLogOut}>
-          Log Out
-        </button>
-        <Link href="/profile">
-      <div className="user-image">
-        <img src={userData.image} alt="suerImage" />
-      </div>
-      </Link>
+    <section className='authentication'>
+      <button className="log-button" onClick={handleLogOut}>
+        Log Out
+      </button>
+      {userData ? (
+              <Link href="/profile">
+              <div className="user-image">
+                <img src={userData.image} alt={`${userData?.name}`} />
+              </div>
+            </Link>
+      ) : (
+        <div className='text-red-600'>Loading...</div>
+      )}
       <ThemeSelector />
-    </section> 
+    </section>
   )
 }
 
