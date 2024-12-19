@@ -6,23 +6,23 @@ import { useEffect } from 'react';
 import './Theme-selector.css'
 
 const ThemeSelector = () => {
-    const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
+    const [theme, setTheme] = useState('light')
 
-    const chooseTheme = (selectedTheme) => {
-        if(selectedTheme === 'light') {
-            document.body.style.backgroundColor = '#ececec';
-            document.body.style.color = '#000';
-        }
-        else if (selectedTheme === 'dark') {
-            document.body.style.backgroundColor = '#333';
-            document.body.style.color = '#fff';
-        }
-    }
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+      }, []);
 
-    useEffect (() => {
-        chooseTheme(theme);
-        localStorage.setItem('theme', theme)
-    }, [theme])
+      useEffect(() => {
+        if (theme === 'light') {
+          document.body.style.backgroundColor = '#ececec';
+          document.body.style.color = '#000';
+        } else if (theme === 'dark') {
+          document.body.style.backgroundColor = '#333';
+          document.body.style.color = '#fff';
+        }
+        localStorage.setItem('theme', theme);
+      }, [theme]);
 
     const toggleTheme = () => {
         setTheme((prevtheme) => (prevtheme === 'light' ? 'dark' : 'light'));

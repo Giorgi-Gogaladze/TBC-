@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "@/i18n/routing";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const LanguageSelector: React.FC = () => {
@@ -11,7 +11,7 @@ const LanguageSelector: React.FC = () => {
     if (pathname.includes("about-us")) {
       router.push(`/${locale}/about-us`);
     } else {
-      router.push(`/${locale}${pathname}`);
+      router.push(pathname);
     }
   };
 
