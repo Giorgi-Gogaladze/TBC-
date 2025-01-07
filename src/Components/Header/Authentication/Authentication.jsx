@@ -1,11 +1,11 @@
 'use client'
 import './Authentication.css';
 import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie';
 import { fetchUser } from '../../../Utilities/fetchUser';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ThemeSelector from '../../theme-selector/ThemeSelector';
+import { logout } from '@/app/logout/actions';
 
 
  function Authentication() {
@@ -23,17 +23,19 @@ import ThemeSelector from '../../theme-selector/ThemeSelector';
     }
     getData()
   },[])
-
+/* 
   const handleLogOut = ()  => {
     Cookies.remove('accessToken')
     router.push('/login')
-  }
+  } */
 
   return (
      <section className='authentication'>
-          <button className="log-button" onClick={handleLogOut}>
-          Log Out
+      <form action={logout}>
+          <button className="log-button" type='submit'>
+          LogOut
         </button>
+      </form>
         <Link href="/profile">
       <div className="user-image">
         <img src={userData.image} alt="suerImage" />

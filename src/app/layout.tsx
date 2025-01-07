@@ -3,7 +3,6 @@ import './styles/global.css';
 import Head from 'next/head';
 import Header from '../Components/Header/Header';  
 import Footer from '../Components/Footer/Footer';
-import AuthChecker from '../Components/auth-checker/AuthChecker';
 import { usePathname } from 'next/navigation';
 import { metadata } from '../Utilities/metadata';
 
@@ -14,6 +13,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children, locale }: RootLayoutProps) {
 
   const pathname = usePathname();
+  const isLoginPage = pathname === '/login'
 
   return (
     <html lang={locale}>
@@ -26,11 +26,9 @@ export default function RootLayout({ children, locale }: RootLayoutProps) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
       </Head>
       <body>
-        <AuthChecker>
-          {pathname !== '/login' && <Header locale={locale} />}
+         {!isLoginPage && <Header locale={locale} />}
             {children}
-          {pathname !== '/login' && <Footer />}
-        </AuthChecker>
+          {!isLoginPage && <Footer />}
       </body>
     </html>
   );
