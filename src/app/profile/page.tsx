@@ -1,4 +1,4 @@
-'use client'
+/* 'use client'
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import Loading from '../../Components/loading/Loading';
@@ -51,3 +51,4 @@ function Profile() {
 }
 
 export default Profile;
+ */

@@ -14,7 +14,7 @@ interface fetchProduct {
   price: number;
   img: string;
   rating: number;
-  comments: string;
+  comments_quantity: number;
 }
 
 async function fetchProduct(id: number): Promise<fetchProduct | null> {
@@ -62,8 +62,8 @@ export default async function ProductCard({ params }: ProductCard) {
           <h1 className='title'>{product.name}</h1>
           {/* <p className='availability'>{product.availabilityStatus}</p> */}
           <h3>Price: {product.price}$</h3>
-          <p className='description'>{product.comments}</p>
-          <button className='button'>Add To The Cart</button>
+          <p className='description'>idk somehting: {product.comments_quantity}</p>
+          <button className='button'>buy now</button>
         </div>
       </div>
     </div>

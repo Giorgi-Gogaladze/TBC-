@@ -1,8 +1,8 @@
 'use client'
 import './Authentication.css';
 import { useRouter } from 'next/navigation';
-import { fetchUser } from '../../../Utilities/fetchUser';
-import { useEffect, useState } from 'react';
+/* import { fetchUser } from '../../../Utilities/fetchUser';
+ */import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ThemeSelector from '../../theme-selector/ThemeSelector';
 import { logout } from '@/app/logout/actions';
@@ -12,7 +12,7 @@ import { logout } from '@/app/logout/actions';
   const [userData, setUserData] =useState([])
   const router = useRouter();
 
-  useEffect(() => {
+  /* useEffect(() => {
     async function getData() {
        try {
       const data = await fetchUser();
@@ -22,7 +22,7 @@ import { logout } from '@/app/logout/actions';
     }
     }
     getData()
-  },[])
+  },[]) */
 /* 
   const handleLogOut = ()  => {
     Cookies.remove('accessToken')

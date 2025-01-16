@@ -1,24 +1,24 @@
 'use client';
 import Link from 'next/link';
 import './Products.css';
-import ProductSearchPage from '../../Components/products-page/ProductSearchPage';
+/* import ProductSearchPage from '../../Components/products-page/ProductSearchPage';
 import SortingOptions from '../../Components/products-page/SortingOptions';
-import AddingProducts from '../../Components/adding-products/AddingProducts';
+import AddingProducts from '../../Components/adding-products/AddingProducts'; */
 import { useEffect, useState } from 'react';
 
 interface fetchProducts {
   id: string;
-  created_at: string;
   name: string;
   price: number;
   img: string;
   rating: number;
-  comments: string;
+  comments_quantity: number;
+  stripe_product_id: string;
 }
 
-//  fetchProducts ატან პარამეტრად searchQuery, sortBy, order
+//  fetchProducts ვატან პარამეტრად searchQuery, sortBy, order
 const fetchProducts = async (): Promise<fetchProducts[]> => {
-  let url = `http://localhost:3000/api/getProducts`;
+  let url = `/api/getProducts`;
 
   // if (searchQuery) {
   //   url += `/search?q=${searchQuery}`;
@@ -26,13 +26,14 @@ const fetchProducts = async (): Promise<fetchProducts[]> => {
   // if (sortBy && order) {
   //   url += (searchQuery ? `&sortBy=${sortBy}&order=${order}` : `?sortBy=${sortBy}&order=${order}`);
   // }
-
   const response = await fetch(url);
   if (!response.ok) throw new Error('Failed to fetch data, response is not OK');
 
   const data = await response.json();
+  console.log(data)
 
-  return data.posts;
+  return data.products
+    ;
 };
 
 const Page: React.FC = () => {
@@ -41,8 +42,8 @@ const Page: React.FC = () => {
   // const order = searchParams.order || '';
 
   const [fetchedProds, setFetchedProds] = useState<fetchProducts[]>([]);
-  const [createdProds, setCreatedProds] = useState([]);
-  const [editData, setEditData] = useState(null);
+  /*   const [createdProds, setCreatedProds] = useState([]);
+   */  /* const [editData, setEditData] = useState(null); */
   // const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
 
   // const handleCreatedProds = (newProd) => {
@@ -74,14 +75,18 @@ const Page: React.FC = () => {
         const products = await fetchProducts();
         setFetchedProds(products);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     };
     displayProds();
   }, []);
 
-  const unitedProds = [...createdProds, ...fetchedProds];
+  useEffect(() => {
+    console.log(fetchedProds);
+  }, [fetchedProds]);
 
+  /*   const unitedProds = [...createdProds, ...fetchedProds];
+   */
   return (
     <div className='products main-width'>
       {/* <div className='imported-comps'>
@@ -100,12 +105,12 @@ const Page: React.FC = () => {
       </div> */}
 
       <div className='product-cards'>
-        {unitedProds.length === 0 ? (
+        {fetchedProds.length === 0 ? (
           <div className='not-found'>
             <p>No product found</p>
           </div>
         ) : (
-          unitedProds.map((product) => (
+          fetchedProds.map((product) => (
             <div key={product.id} className='product-card'>
               <div
                 style={{
@@ -118,12 +123,12 @@ const Page: React.FC = () => {
                 <img
                   src='https://png.pngtree.com/png-vector/20190420/ourmid/pngtree-delete-vector-icon-png-image_963444.jpg'
                   alt='remove'
-                  // onClick={() => deleteProduct(product.id)}
+                // onClick={() => deleteProduct(product.id)}
                 />
                 <img
                   src='https://w7.pngwing.com/pngs/1018/119/png-transparent-computer-icons-editing-pencil-miscellaneous-angle-pencil.png'
                   alt='edit'
-                  // onClick={() => editProductInitiation(product)}
+                // onClick={() => editProductInitiation(product)}
                 />
               </div>
               <div className='image'>
@@ -132,11 +137,12 @@ const Page: React.FC = () => {
               <div className='info'>
                 {/* <h2>{product.brand}</h2> */}
                 <h4>{product.name}</h4>
-                <p>Price: ${product.price}</p>
+                <p>${product.price}</p>
                 {/* <p>Stock: {product.availabilityStatus}</p> */}
-                <Link href={`/products/${product.id}`}>
+                <Link href={`/products/${product.id}`} >
                   <button>See more</button>
                 </Link>
+                  <button>Buy now</button>
               </div>
             </div>
           ))
