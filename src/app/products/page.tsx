@@ -5,6 +5,9 @@ import './Products.css';
 import SortingOptions from '../../Components/products-page/SortingOptions';
 import AddingProducts from '../../Components/adding-products/AddingProducts'; */
 import { useEffect, useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
 interface fetchProducts {
   id: string;
@@ -81,10 +84,30 @@ const Page: React.FC = () => {
     displayProds();
   }, []);
 
-  useEffect(() => {
-    console.log(fetchedProds);
-  }, [fetchedProds]);
 
+  const handleCheckout = async (stripeProductId: string) => {
+    const stripe = await stripePromise;
+
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          stripeProductId,
+        }),
+      });
+
+      if (!response.ok) throw new Error('Failed to create session');
+      const { sessionId } = await response.json();
+
+      // Redirect to Stripe Checkout
+      await stripe?.redirectToCheckout({ sessionId });
+    } catch (error) {
+      console.error('Checkout failed:', error);
+    }
+  };
   /*   const unitedProds = [...createdProds, ...fetchedProds];
    */
   return (
@@ -142,7 +165,7 @@ const Page: React.FC = () => {
                 <Link href={`/products/${product.id}`} >
                   <button>See more</button>
                 </Link>
-                  <button>Buy now</button>
+                  <button onClick={() => handleCheckout(product.stripe_product_id)}>Buy now</button>
               </div>
             </div>
           ))
